@@ -1,84 +1,64 @@
-
 using UnityEngine;
 
 public class GFreddyAperance : MonoBehaviour
 {
-    [Header("Detección")]
-    [SerializeField] private Transform player;
-    [SerializeField] private float activationDistance = 15f;
+    [Header("Detection")]
+    [SerializeField] private Transform player;                 // The player's transform, used to measure the distance
+    [SerializeField] private float activationDistance = 15f;   // Distance at which the character appears
 
-    [Header("Freddy")]
-    [SerializeField] private SpriteRenderer freddySprite;
+    [Header("Character")]
+    [SerializeField] private GameObject visual;                // Child object that holds the character's sprite (hidden at start)
+    [SerializeField] private bool hideWhenPlayerLeaves = true; // If true, the character hides again when the player moves away
 
-    [Header("Efecto de oscuridad")]
-    [SerializeField] private GameObject darknessEffect;
+    [Header("Sound")]
+    [SerializeField] private AudioSource laughSound;           // Laugh played when the character appears (keep it on THIS object, not on the hidden child)
 
-    [Header("Sonido")]
-    [SerializeField] private AudioSource audioSource;
-
-    private bool isActive = false;
+    private bool isVisible = false; // Current state, so the laugh only plays once per appearance
 
     private void Start()
     {
-        // Freddy empieza invisible
-        if (freddySprite != null)
-            freddySprite.enabled = false;
+        if (player == null)
+            Debug.LogWarning("GFreddyAperance: assign the Player in the Inspector.", this);
 
-        // Oscuridad empieza desactivada
-        if (darknessEffect != null)
-            darknessEffect.SetActive(false);
+        // The character starts hidden
+        if (visual != null)
+            visual.SetActive(false);
     }
 
     private void Update()
     {
-        if (player == null)
-            return;
+        if (player == null) return;
 
+        // Distance between this character and the player (2D)
         float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance <= activationDistance)
-        {
             Appear();
-        }
-        else
-        {
+        else if (hideWhenPlayerLeaves)
             Disappear();
-        }
     }
 
     private void Appear()
     {
-        if (isActive)
-            return;
+        if (isVisible) return; // Already visible, do nothing
+        isVisible = true;
 
-        isActive = true;
+        // Show the character
+        if (visual != null)
+            visual.SetActive(true);
 
-        // Mostrar a Freddy
-        if (freddySprite != null)
-            freddySprite.enabled = true;
-
-        // Activar oscuridad
-        if (darknessEffect != null)
-            darknessEffect.SetActive(true);
-
-        // Reproducir sonido
-        if (audioSource != null)
-            audioSource.Play();
+        // Play the laugh
+        if (laughSound != null)
+            laughSound.Play();
     }
 
     private void Disappear()
     {
-        if (!isActive)
-            return;
+        if (!isVisible) return; // Already hidden, do nothing
+        isVisible = false;
 
-        isActive = false;
-
-        // Ocultar a Freddy
-        if (freddySprite != null)
-            freddySprite.enabled = false;
-
-        // Desactivar oscuridad
-        if (darknessEffect != null)
-            darknessEffect.SetActive(false);
+        // Hide the character
+        if (visual != null)
+            visual.SetActive(false);
     }
 }
