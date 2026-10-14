@@ -1,11 +1,32 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class SelectCharacterManager : MonoBehaviour
 {
-     public void CharactersBackToMenu()
+    [SerializeField] private string gameSceneName = "Level1F"; // Name of the game scene (must be in Build Settings)
+
+    // Called by each character button. The index is set in the button's OnClick event
+    public void SelectCharacter(int index)
     {
-        SceneManager.LoadScene("Menu"); // Load the game scene when the "Return to Menu" button is clicked
+        PlayerPrefs.SetInt("SelectedCharacter", index); // Save the chosen character
+        PlayerPrefs.Save();
+    }
+
+    // Use this if you want to pick a character and start the game with a single click
+    public void SelectAndPlay(int index)
+    {
+        SelectCharacter(index);
+        SceneManager.LoadScene(gameSceneName);
+    }
+
+    // Use this for a separate "Play" button after choosing a character
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(gameSceneName);
+    }
+
+    public void CharactersBackToMenu()
+    {
+        SceneManager.LoadScene("Menu"); // Return to the menu scene
     }
 }

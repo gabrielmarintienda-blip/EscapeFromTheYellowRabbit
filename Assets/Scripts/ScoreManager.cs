@@ -3,10 +3,13 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI scoreText; // The player's current score
+    [SerializeField] TextMeshProUGUI scoreText; // Text that displays the player's score
+
+    private int totalScore = 0; // Accumulated score
+
     public void AddScore(int score)
     {
-       scoreText.text = score.ToString("00000"); // Update the score text with the new score
+        totalScore += score; // Add the new points to the total
+        scoreText.text = totalScore.ToString("00000"); // Update the score text
     }
-
 }
