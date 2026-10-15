@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d0d7e32857bf6434f9f4449198bdf60d
+guid: fb08e8b5942b76a4a8c7d3d7dd8e553e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5731500140864086410
-    second: Cloud 3_0
+      213: -3746704196469286985
+    second: Backstage_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -98,17 +98,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cloud 3_0
+      name: Backstage_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 856
-        height: 436
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67ed1b91dfe9570b0800000000000000
-      internalID: -5731500140864086410
+      spriteID: 7b79bfa5268010cc0800000000000000
+      internalID: -3746704196469286985
       vertices: []
       indices: 
       edges: []
@@ -137,7 +163,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cloud 3_0: -5731500140864086410
+      Backstage_0: -3746704196469286985
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

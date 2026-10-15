@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     SurfaceEffector2D surfaceEffector2D;
     Rigidbody2D rb;
     public Animator animator;
-    [SerializeField] private AnimatorOverrideController[] characterAnimators; // One per character, same order as the selection screen
-
     [SerializeField] private GameFlowManager gameFlow;
 
     private float aliveTime = 0f;          // Total time alive (seconds)
@@ -43,6 +41,7 @@ public class PlayerController : MonoBehaviour
     int activatePowerUpCount; // Counter to track the number of power-ups activated
 
         private bool canControllPlayer = true; // Flag to control player input
+        private const int CharacterCount = 5; // Number of selectable characters
 
 
     public bool CanControllPlayer { get => canControllPlayer; set => canControllPlayer = value; }
@@ -63,6 +62,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Applies the animator override of the character chosen in the selection screen
+    // Plays the walk animation of the character chosen in the selection screen
     private void SetupCharacterAnimator()
     {
         animator = GetComponentInChildren<Animator>(); // The Animator lives on the "Visual" child
@@ -73,17 +73,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (characterAnimators == null || characterAnimators.Length == 0)
-        {
-            Debug.LogError("PlayerController: assign the Character Animators array in the Inspector.", this);
-            return;
-        }
+        // Read the saved character (0 if none was saved) and keep it inside the valid range
+        int selected = Mathf.Clamp(PlayerPrefs.GetInt("SelectedCharacter", 0), 0, CharacterCount - 1);
 
-        // Read the saved character (0 if none was saved) and keep it inside the array range
-        int selected = Mathf.Clamp(PlayerPrefs.GetInt("SelectedCharacter", 0), 0, characterAnimators.Length - 1);
-        Debug.Log("Selected character: " + selected);
+        // State names are WalkCharacter1 ... WalkCharacter5, so we add 1 to the index
+        string stateName = "WalkCharacter" + (selected + 1);
+        Debug.Log("Selected character: " + selected + " -> playing " + stateName);
 
-        animator.runtimeAnimatorController = characterAnimators[selected];
+        animator.Play(stateName); // Jump straight to the walk state of that character
     }
     
 
@@ -93,7 +90,6 @@ public class PlayerController : MonoBehaviour
         if (!canControllPlayer) return; // If player input is disabled, exit the Update method
         CalculateTime();
         PlayerTorque();   
-        BoostPlayer();
         PlayerJump();
         
     }
@@ -196,23 +192,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-    void BoostPlayer()
-    {
-        //Increases the player's speed when the player presses the up arrow key or W key.
-        //surface efector speed is increased to booste
-       if (moveInput.y > 0)
-        {
-            surfaceEffector2D.speed = boostSpeed;
-          //  snowEffect.Play();
 
-
-        }
-        else
-        {
-            surfaceEffector2D.speed = baseSpeed;
-          //  snowEffect.Stop();
-        }
-    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         int LayerIndex = LayerMask.NameToLayer("Floor");

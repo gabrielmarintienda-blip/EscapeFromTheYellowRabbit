@@ -2,15 +2,32 @@ using UnityEngine;
 
 public class RabbitignoreProps : MonoBehaviour
 {
-  void Start()
+    void Start()
     {
-        // Find the parent object that holds every prop in the level
-        GameObject props = GameObject.Find("Props");
-        if (props == null) return;
+        // Colliders of this object (calculated only once)
+        Collider2D[] myColliders = GetComponentsInChildren<Collider2D>(true);
 
-        // Ignore collisions between every collider of this object and every prop collider
-        foreach (Collider2D prop in props.GetComponentsInChildren<Collider2D>(true))
-            foreach (Collider2D mine in GetComponentsInChildren<Collider2D>(true))
-                Physics2D.IgnoreCollision(mine, prop);
+        // Ignore collisions with props
+        GameObject props = GameObject.Find("Props");
+        if (props != null)
+        {
+            foreach (Collider2D prop in props.GetComponentsInChildren<Collider2D>(true))
+                foreach (Collider2D mine in myColliders)
+                    Physics2D.IgnoreCollision(mine, prop);
+        }
+        else
+        {
+            Debug.LogWarning("RabbitignoreProps: no object named 'Props' was found.", this);
+        }
+
+        // Ignore collisions with every other enemy that has this script
+        foreach (RabbitignoreProps other in FindObjectsOfType<RabbitignoreProps>())
+        {
+            if (other == this) continue;
+
+            foreach (Collider2D theirs in other.GetComponentsInChildren<Collider2D>(true))
+                foreach (Collider2D mine in myColliders)
+                    Physics2D.IgnoreCollision(mine, theirs);
+        }
     }
 }
