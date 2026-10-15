@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("SelectLevels"); // Load the game scene when the "Start Game" button is clicked
     }
 
+
     public void goToCredits()
     {
         SceneManager.LoadScene("Credits"); // Load the game scene when the "Return to Menu" button is clicked

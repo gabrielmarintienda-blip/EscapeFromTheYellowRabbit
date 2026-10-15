@@ -21,8 +21,10 @@ public class GameFlowManager : MonoBehaviour
     [SerializeField] private float shakeAmount = 15f;       // Shake intensity in pixels
 
     [Header("Scenes")]
-    [SerializeField] private string levelSelectScene = "LevelSelect";
-    [SerializeField] private string mainMenuScene = "MainMenu";
+    [SerializeField] private string levelSelectScene = "SelectLevels";
+    [SerializeField] private string mainMenuScene = "Menu";
+
+    private const int TotalLevels = 6;
 
     [Header("Audio")]
     [SerializeField] private AudioSource[] soundsToStop; // Music and any ambient sounds to cut on death
@@ -35,8 +37,26 @@ public class GameFlowManager : MonoBehaviour
     {
         if (gameEnded) return;
         gameEnded = true;
+        UnlockNextLevel();
         Time.timeScale = 0f; // Freeze the game
         StartCoroutine(NightCompleteRoutine());
+    }
+
+    private void UnlockNextLevel()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName.StartsWith("Level") &&
+            int.TryParse(sceneName.Substring(5), out int currentLevel))
+        {
+            int next = Mathf.Min(currentLevel + 1, TotalLevels);
+            int unlocked = PlayerPrefs.GetInt("UnlockedLevel", 1);
+            if (next > unlocked)
+            {
+                PlayerPrefs.SetInt("UnlockedLevel", next);
+                PlayerPrefs.Save();
+            }
+        }
     }
 
     private IEnumerator NightCompleteRoutine()
@@ -129,11 +149,18 @@ public class GameFlowManager : MonoBehaviour
     public void NextLevel()
     {
         Time.timeScale = 1f;
-        int next = SceneManager.GetActiveScene().buildIndex + 1;
-        if (next < SceneManager.sceneCountInBuildSettings)
-            SceneManager.LoadScene(next);
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName.StartsWith("Level") &&
+            int.TryParse(sceneName.Substring(5), out int current) &&
+            Application.CanStreamedLevelBeLoaded($"Level{current + 1}"))
+        {
+            SceneManager.LoadScene($"Level{current + 1}");
+        }
         else
-            SceneManager.LoadScene(mainMenuScene); // No more levels
+        {
+            SceneManager.LoadScene(mainMenuScene); // No hay más niveles
+        }
     }
 
  private void StopMusic()

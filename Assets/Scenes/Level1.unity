@@ -4904,12 +4904,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   animator: {fileID: 292772473}
-  characterAnimators:
-  - {fileID: 22100000, guid: 1ca19416d1cb5a442a58ce7976ab9b8c, type: 2}
-  - {fileID: 22100000, guid: 1ca19416d1cb5a442a58ce7976ab9b8c, type: 2}
-  - {fileID: 22100000, guid: 1ca19416d1cb5a442a58ce7976ab9b8c, type: 2}
-  - {fileID: 22100000, guid: 1ca19416d1cb5a442a58ce7976ab9b8c, type: 2}
-  - {fileID: 22100000, guid: 1ca19416d1cb5a442a58ce7976ab9b8c, type: 2}
   gameFlow: {fileID: 1009839540}
 --- !u!114 &292772470
 MonoBehaviour:
@@ -4923,7 +4917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d91478f8e394ca45baebaea2be05ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrashDetector
-  crashDelay: 0
+  crashDelay: 1
   bloodEffect: {fileID: 316689618}
 --- !u!61 &292772472
 BoxCollider2D:
@@ -5383,7 +5377,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_MaskInteraction: 0
   m_RenderMode: 0
   m_MeshDistribution: 0

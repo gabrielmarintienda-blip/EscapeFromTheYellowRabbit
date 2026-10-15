@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 29493147}
   - component: {fileID: 29493146}
   - component: {fileID: 29493150}
+  - component: {fileID: 29493152}
   - component: {fileID: 29493151}
   m_Layer: 5
   m_Name: SelectCharacters
@@ -392,6 +393,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81f1e84b74e05e40aad5e324f2349ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
+--- !u!114 &29493152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29493145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447686abacf420c4faceb89902c6361d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelSelectUnlocker
+  levelButtons:
+  - {fileID: 1109351693}
+  - {fileID: 887771661}
+  - {fileID: 1900550319}
+  - {fileID: 576498534}
+  - {fileID: 84705390}
+  - {fileID: 967670042}
 --- !u!1 &59730678
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +562,7 @@ GameObject:
   - component: {fileID: 84705391}
   - component: {fileID: 84705390}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BTN5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -949,7 +969,7 @@ GameObject:
   - component: {fileID: 576498535}
   - component: {fileID: 576498534}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BTN4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1082,7 +1102,7 @@ GameObject:
   - component: {fileID: 887771662}
   - component: {fileID: 887771661}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BTN2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1431,7 +1451,7 @@ GameObject:
   - component: {fileID: 967670043}
   - component: {fileID: 967670042}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: BTN6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1709,7 +1729,7 @@ GameObject:
   - component: {fileID: 1109351694}
   - component: {fileID: 1109351693}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BTN1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2533,7 +2553,7 @@ GameObject:
   - component: {fileID: 1900550320}
   - component: {fileID: 1900550319}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: BTN3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
