@@ -10,7 +10,14 @@ public class SelectCharacterManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("SelectedCharacter", index); // Save the chosen character
         PlayerPrefs.Save();
-        Debug.Log("Character saved: " + index); // Temporary debug line
+    }
+
+    public void SelectCharacterAndGoMenu(int index)
+    {
+        PlayerPrefs.SetInt("SelectedCharacter", index); // Save the chosen character
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("Menu"); // Return to the menu scene
+
     }
 
     // Use this if you want to pick a character and start the game with a single click

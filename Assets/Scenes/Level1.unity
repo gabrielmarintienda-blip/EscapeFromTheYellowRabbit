@@ -4803,7 +4803,7 @@ Transform:
   m_GameObject: {fileID: 292772465}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.1, y: -4.72, z: 0}
+  m_LocalPosition: {x: -9.9, y: -4.72, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10421,7 +10421,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.110001, y: 1.2800002, z: -10}
+  m_LocalPosition: {x: -9.91, y: 1.2800002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19188,7 +19188,7 @@ Transform:
   m_GameObject: {fileID: 847352672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.69, y: -4.66, z: 0}
+  m_LocalPosition: {x: -21.5, y: -4.66, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23485,7 +23485,7 @@ Transform:
   m_GameObject: {fileID: 1096577812}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.110001, y: 1.2800002, z: -10}
+  m_LocalPosition: {x: -9.91, y: 1.2800002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24005,7 +24005,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Select level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b971342bef4931c4f895b00dd7f553f2, type: 2}
   m_sharedMaterial: {fileID: 397025465632316186, guid: b971342bef4931c4f895b00dd7f553f2, type: 2}
@@ -24032,8 +24032,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -31167,7 +31167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1532600403
 Transform:
   m_ObjectHideFlags: 0
