@@ -29,6 +29,7 @@ public class GameFlowManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource[] soundsToStop; // Music and any ambient sounds to cut on death
     [SerializeField] private AudioClip deathSound;       // Played when the player dies
+    [SerializeField] private AudioClip sixAmSound;       // Played when the 6 AM screen starts to fade in
 
     private bool gameEnded = false; // Prevents triggering two endings at once
 
@@ -38,6 +39,7 @@ public class GameFlowManager : MonoBehaviour
         if (gameEnded) return;
         gameEnded = true;
         UnlockNextLevel();
+        StopMusic(); // Cut the music and ambient sounds as soon as the night is over
         Time.timeScale = 0f; // Freeze the game
         StartCoroutine(NightCompleteRoutine());
     }
@@ -63,6 +65,9 @@ public class GameFlowManager : MonoBehaviour
     {
         sixAmImage.gameObject.SetActive(true);
         sixAmImage.alpha = 0f;
+
+        // Play the 6 AM sound right when the image starts to appear
+        if (sixAmSound != null) audioSource.PlayOneShot(sixAmSound);
 
         // Fade in using unscaled time (works while timeScale is 0)
         float t = 0f;
